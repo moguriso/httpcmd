@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os/exec"
+	"time"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -88,6 +89,12 @@ func Air(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	case "off":
 		fmt.Fprintf(w, "Air show: fav")
 		arg = fmt.Sprintf("-d %s", readSeq("./cmd/air_off.txt"))
+	case "timer-on":
+		fmt.Fprintf(w, "Air show: timer on")
+		arg = fmt.Sprintf("-d %s", readSeq("./cmd/air_timer_on.txt"))
+	case "timer-off":
+		fmt.Fprintf(w, "Air show: timer off")
+		arg = fmt.Sprintf("-d %s", readSeq("./cmd/air_timer_off.txt"))
 	}
 	runCommand(cmd, arg)
 }
@@ -108,6 +115,11 @@ func Senpu(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	case "off":
 		fmt.Fprintf(w, "Senpu show: off")
 		arg = fmt.Sprintf("-d %s", readSeq("./cmd/senpuuki_on-off.txt"))
+	case "timer":
+		fmt.Fprintf(w, "Senpu show: timer")
+		arg = fmt.Sprintf("-d %s", readSeq("./cmd/senpuuki_timer.txt"))
+		runCommand(cmd, arg)
+		time.Sleep(2 * time.Second)
 	}
 	runCommand(cmd, arg)
 }
