@@ -1,0 +1,16 @@
+{
+  "version": 0,
+  "dependencies": [
+    {
+      "importpath": "github.com/julienschmidt/httprouter",
+      "repository": "https://github.com/julienschmidt/httprouter",
+      "branch": "master"
+    },
+    {
+      "importpath": "golang.org/x/net/websocket",
+      "repository": "https://go.googlesource.com/net",
+      "branch": "master",
+      "path": "/websocket"
+    }
+  ]
+}

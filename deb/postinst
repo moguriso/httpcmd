@@ -1,0 +1,23 @@
+#!/bin/sh -e
+
+cat << EOS > /etc/supervisor/conf.d/ir-http.conf
+[supervisord]
+nocleanup=true
+
+[program:ir-http]
+directory=/opt/ir-http
+command=/opt/ir-http/ir-http 
+redirect_stderr=true
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/ir-http-stderr.log
+stdout_logfile=/var/log/ir-http-stdout.log
+stdout_logfile_maxbytes=100MB
+stdout_logfile_backups=5
+umask=644
+stderr_logfile_maxbytes=100MB
+stderr_logfile_backups=5
+EOS
+
+/etc/init.d/supervisor restart
+
