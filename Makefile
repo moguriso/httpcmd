@@ -15,7 +15,7 @@ endef
 BuildDeb = mkdir -p work/opt/ir-http; \
 		   mkdir -p work/DEBIAN ; \
 		   cp ./bin/$(1) ./work/opt/ir-http/ir-http; \
-		   cp -Rp ./conf ./work/opt/ir-http; \
+		   cp -Rp ./cmd ./work/opt/ir-http; \
 		   cp ./deb/post* ./work/DEBIAN/ ; \
 		   sed -e 's/%%DBG%%/$(2)/' -e 's/%%ARCH%%/$(3)/' ./deb/conf > ./work/DEBIAN/control ; \
 		   fakeroot dpkg-deb --build ./work . ; \
