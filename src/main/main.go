@@ -51,11 +51,16 @@ func LightIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	fmt.Fprintf(w, "Light Welcmoe!")
 }
 
+func initCmd(w http.ResponseWriter, ps httprouter.Params) (code, cmd, arg string) {
+	cd := ps.ByName("id")
+	cm := "./cmd/remocon"
+	ar := ""
+	return cd, cm, ar
+}
+
 func Light(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	//	fmt.Fprintf(w, "Light show: %s", ps.ByName("id"))
-	code := ps.ByName("id")
-	cmd := "./cmd/remocon"
-	arg := ""
+	code, cmd, arg := initCmd(w, ps)
 	switch code {
 	case "on":
 		fmt.Fprintf(w, "Light show: on")
@@ -76,9 +81,7 @@ func AirIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func Air(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	//fmt.Fprintf(w, "Air Welcmoe!")
-	code := ps.ByName("id")
-	cmd := "./cmd/remocon"
-	arg := ""
+	code, cmd, arg := initCmd(w, ps)
 	switch code {
 	case "jositu":
 		fmt.Fprintf(w, "Air show: on")
@@ -105,9 +108,7 @@ func SenpuIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func Senpu(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	//fmt.Fprintf(w, "Senpu show: %s", ps.ByName("id"))
-	code := ps.ByName("id")
-	cmd := "./cmd/remocon"
-	arg := ""
+	code, cmd, arg := initCmd(w, ps)
 	switch code {
 	case "on":
 		fmt.Fprintf(w, "Senpu show: on")
