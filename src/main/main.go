@@ -52,6 +52,7 @@ func LightIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func initCmd(w http.ResponseWriter, ps httprouter.Params) (code, cmd, arg string) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	cd := ps.ByName("id")
 	cm := "./cmd/remocon"
 	ar := ""
