@@ -121,7 +121,7 @@ func Senpu(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		fmt.Fprintf(w, "Senpu show: timer")
 		arg = fmt.Sprintf("-d %s", readSeq("./cmd/senpuuki_timer.txt"))
 		runCommand(cmd, arg)
-		time.Sleep(2 * time.Second)
+		time.Sleep(500 * time.Millisecond)
 	}
 	runCommand(cmd, arg)
 }
