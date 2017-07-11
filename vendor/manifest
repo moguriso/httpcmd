@@ -7,6 +7,12 @@
       "branch": "master"
     },
     {
+      "importpath": "github.com/lazywei/go-opencv/opencv",
+      "repository": "https://github.com/lazywei/go-opencv",
+      "branch": "master",
+      "path": "/opencv"
+    },
+    {
       "importpath": "golang.org/x/net/websocket",
       "repository": "https://go.googlesource.com/net",
       "branch": "master",

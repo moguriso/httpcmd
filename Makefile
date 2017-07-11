@@ -6,7 +6,7 @@ REVISION	:= $(shell git rev-parse --short HEAD)
 SRCS		:= $(shell find ./src -type f -name '*.go')
 VSRCS		:= $(shell find ./vendor -type f -name '*.go')
 VSRC_EXIST	:= $(shell find ./vendor -name src)
-LDFLAGS		:= -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\" -extldflags \"-static\""
+LDFLAGS		:= -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
 
 define vendor_restore
 	@gb vendor restore 
