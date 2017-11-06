@@ -1,6 +1,6 @@
 
 BUILD		:= release
-VERSION		:= v1.0.1
+VERSION		:= v1.0.2
 REVISION	:= $(shell git rev-parse --short HEAD)
 
 SRCS		:= $(shell find ./src -type f -name '*.go')
@@ -16,6 +16,7 @@ BuildDeb = mkdir -p work/opt/ir-http; \
 		   mkdir -p work/DEBIAN ; \
 		   cp ./bin/$(1) ./work/opt/ir-http/ir-http; \
 		   cp -Rp ./cmd ./work/opt/ir-http; \
+		   cp ./config.json ./work/opt/ir-http; \
 		   cp ./deb/post* ./work/DEBIAN/ ; \
 		   sed -e 's/%%DBG%%/$(2)/' -e 's/%%ARCH%%/$(3)/' ./deb/conf > ./work/DEBIAN/control ; \
 		   fakeroot dpkg-deb --build ./work . ; \
