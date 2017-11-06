@@ -1,22 +1,44 @@
 {
-  "version": 0,
-  "dependencies": [
-    {
-      "importpath": "github.com/julienschmidt/httprouter",
-      "repository": "https://github.com/julienschmidt/httprouter",
-      "branch": "master"
-    },
-    {
-      "importpath": "github.com/lazywei/go-opencv/opencv",
-      "repository": "https://github.com/lazywei/go-opencv",
-      "branch": "master",
-      "path": "/opencv"
-    },
-    {
-      "importpath": "golang.org/x/net/websocket",
-      "repository": "https://go.googlesource.com/net",
-      "branch": "master",
-      "path": "/websocket"
-    }
-  ]
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/PuerkitoBio/goquery",
+			"repository": "https://github.com/PuerkitoBio/goquery",
+			"revision": "1a71cc719d0d5b9e4f14ae072bef08b576b0bab5",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/andybalholm/cascadia",
+			"repository": "https://github.com/andybalholm/cascadia",
+			"revision": "349dd0209470eabd9514242c688c403c0926d266",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/julienschmidt/httprouter",
+			"repository": "https://github.com/julienschmidt/httprouter",
+			"revision": "",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/lazywei/go-opencv/opencv",
+			"repository": "https://github.com/lazywei/go-opencv",
+			"revision": "fb0a687051c795176e0698f358231f2ab1585bcb",
+			"branch": "master",
+			"path": "/opencv"
+		},
+		{
+			"importpath": "golang.org/x/net/html",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "",
+			"branch": "master",
+			"path": "/html"
+		},
+		{
+			"importpath": "golang.org/x/net/websocket",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "",
+			"branch": "master",
+			"path": "/websocket"
+		}
+	]
 }

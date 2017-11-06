@@ -1,9 +1,7 @@
 package webcam
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"time"
@@ -12,6 +10,11 @@ import (
 )
 
 var gCap *opencv.Capture
+var gCameraIndex int
+
+func SetCameraIndex(index int) {
+	gCameraIndex = index
+}
 
 func checkAndMoveFile(f string) {
 	if _, err := os.Stat(f); err == nil {
@@ -21,31 +24,8 @@ func checkAndMoveFile(f string) {
 	}
 }
 
-var cameraIndex int
-
-func LoadParam(fileName string) {
-	isSet := false
-	var config map[string]interface{}
-	data, err := ioutil.ReadFile(fileName)
-	if err != nil {
-		log.Println(fileName, " read error")
-		return
-	}
-
-	err = json.Unmarshal(data, &config)
-	var ftmp float64
-	ftmp, isSet = config["camera_index"].(float64)
-	if !isSet {
-		cameraIndex = 0
-	} else {
-		cameraIndex = int(ftmp)
-	}
-
-	log.Println("parameter: ", cameraIndex)
-}
-
 func Init() {
-	gCap = opencv.NewCameraCapture(cameraIndex)
+	gCap = opencv.NewCameraCapture(gCameraIndex)
 	if gCap == nil {
 		panic("can not open camera")
 	}

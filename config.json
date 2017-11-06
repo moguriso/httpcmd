@@ -1,0 +1,5 @@
+{
+  "camera_index": 0,
+  "sensor_url":"http://localhost/param_sensortag_poll.html",
+  "sensor_read_interval": 1000.0
+}

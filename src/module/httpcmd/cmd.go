@@ -12,7 +12,7 @@ func initCmd() (cmd, arg string) {
 	return cm, ar
 }
 
-func runCommand(cmd, arg string) {
+func RunCommand(cmd, arg string) {
 	log.Println("call cmd = ", cmd)
 	if arg == "" {
 		log.Fatal("arg error")
@@ -26,7 +26,7 @@ func runCommand(cmd, arg string) {
 	}
 }
 
-func readSeq(filename string) string {
+func ReadSeq(filename string) string {
 	b, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
