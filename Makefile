@@ -39,9 +39,16 @@ all: amd64
 clean:
 	@rm -rf bin
 	@rm -rf pkg
+	@rm -rf *.deb
+
+all-clean:
+	@rm -rf bin
+	@rm -rf pkg
 	@rm -rf vendor/src
 	@rm -rf *.deb
 
+setup :
+	$(if $(VSRC_EXIST) ,,$(vendor_restore))
 386: $(SRCS)
 	$(if $(VSRC_EXIST) ,,$(vendor_restore))
 	$(call BuildCommand,386,$(TAGS),$(LDFLAGS))
