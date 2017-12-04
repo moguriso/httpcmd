@@ -4,7 +4,6 @@ import (
 	"flag"
 	"module/config"
 	"module/httpcmd"
-	"module/sensortag"
 	"module/webcam"
 	"os"
 )
@@ -23,8 +22,8 @@ func main() {
 
 	webcam.SetCameraIndex(conf.CameraIndex)
 
-	sd, _ := sensortag.NewData(conf.SensorUrl, conf.SensorReadInterval)
-	go sd.ReadButtonThread()
+	//sd, _ := sensortag.NewData(conf.SensorUrl, conf.SensorReadInterval)
+	//go sd.ReadButtonThread()
 
 	httpcmd.Listen(":8089")
 }
