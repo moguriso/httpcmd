@@ -86,13 +86,16 @@ func Air(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	code, cmd, arg := preInit(w, ps)
 	switch code {
 	case "jositu":
-		fmt.Fprintf(w, "Air show: on")
+		fmt.Fprintf(w, "Air show: jositu on")
 		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_jositu.txt"))
 	case "reibo":
-		fmt.Fprintf(w, "Air show: off")
+		fmt.Fprintf(w, "Air show: reibo on")
 		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_reibo.txt"))
+	case "warm":
+		fmt.Fprintf(w, "Air show: warm on")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_warm.txt"))
 	case "off":
-		fmt.Fprintf(w, "Air show: fav")
+		fmt.Fprintf(w, "Air show: off")
 		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_off.txt"))
 	case "timer-on":
 		fmt.Fprintf(w, "Air show: timer on")
