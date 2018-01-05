@@ -1,3 +1,5 @@
+// +build amd64
+
 package httpcmd
 
 import (
@@ -13,13 +15,14 @@ func initCmd() (cmd, arg string) {
 }
 
 func RunCommand(cmd, arg string) {
-	log.Println("call cmd = ", cmd)
+	log.Println("call cmd = ", cmd, " arg = ", arg)
 	if arg == "" {
 		log.Fatal("arg error")
 	} else {
 		out, err := exec.Command(cmd, arg).Output()
 		if err != nil {
-			log.Fatal(err)
+			log.Println(out)
+			log.Panic(err)
 		} else {
 			log.Println(out)
 		}

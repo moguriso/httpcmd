@@ -57,6 +57,10 @@ arm: $(SRCS)
 	$(if $(VSRC_EXIST) ,,$(vendor_restore))
 	$(call BuildCommand,arm,$(TAGS),$(LDFLAGS))
 
+arm64: $(SRCS)
+	$(if $(VSRC_EXIST) ,,$(vendor_restore))
+	$(call BuildCommand,arm64,$(TAGS),$(LDFLAGS))
+
 amd64: $(SRCS)
 	$(if $(VSRC_EXIST) ,,$(vendor_restore))
 	$(call BuildCommand,amd64,$(TAGS),$(LDFLAGS))
@@ -73,3 +77,8 @@ deb-amd64: ./bin/main-linux-amd64$(IS_DBG)
 deb-armhf: ./bin/main-linux-arm$(IS_DBG)
 	$(call BuildDeb,main-linux-arm$(IS_DBG),$(IS_DBG),armhf)
 
+deb-arm64: ./bin/main-linux-arm64$(IS_DBG)
+	$(call BuildDeb,main-linux-arm64$(IS_DBG),$(IS_DBG),arm64)
+
+archive:
+	@git archive HEAD --output=src.zip

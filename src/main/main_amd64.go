@@ -1,11 +1,10 @@
-// +build arm arm64
-
 package main
 
 import (
 	"flag"
 	"module/config"
 	"module/httpcmd"
+	"module/webcam"
 	"os"
 )
 
@@ -20,6 +19,11 @@ func main() {
 	}
 	conf, _ := config.NewParams()
 	conf.LoadParam(*configFile)
+
+	webcam.SetCameraIndex(conf.CameraIndex)
+
+	//sd, _ := sensortag.NewData(conf.SensorUrl, conf.SensorReadInterval)
+	//go sd.ReadButtonThread()
 
 	httpcmd.Listen(":8089")
 }
