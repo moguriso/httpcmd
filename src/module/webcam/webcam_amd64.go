@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"time"
 
 	"github.com/lazywei/go-opencv/opencv"
 )
@@ -41,13 +40,17 @@ func Snap(f string) {
 		if gCap.GrabFrame() {
 			imgCV := gCap.RetrieveFrame(10)
 			if imgCV != nil {
-				const layout = "2006-01-02 15:04:05"
-				t := time.Now()
 				imgCV = opencv.Resize(imgCV, 320, 240, 0)
-				col := opencv.NewScalar(255, 255, 255, 255)
-				font := opencv.InitFont(opencv.CV_FONT_HERSHEY_PLAIN, 1.2, 1.2, 0, 1, 8)
-				point := opencv.NewCvPoint(5.0, imgCV.Height()-5.0)
-				font.PutText(imgCV, t.Format(layout), point.ToPoint(), col)
+
+				/* Web上の表示と同期しなくて見苦しいので消す {
+					const layout = "2006-01-02 15:04:05"
+					t := time.Now()
+					col := opencv.NewScalar(255, 255, 255, 255)
+					font := opencv.InitFont(opencv.CV_FONT_HERSHEY_PLAIN, 1.2, 1.2, 0, 1, 8)
+					point := opencv.NewCvPoint(5.0, imgCV.Height()-5.0)
+					font.PutText(imgCV, t.Format(layout), point.ToPoint(), col)
+				} */
+
 				opencv.SaveImage(f, imgCV, nil)
 				checkAndMoveFile(f)
 				//log.Println("snapshot Image")

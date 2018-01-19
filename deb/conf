@@ -1,5 +1,5 @@
 Package: ir-cmd-recv-http%%DBG%%
 Maintainer: Yuya Adachi <moguriso@tizen.moe>
 Architecture: %%ARCH%%
-Version: 1.0.5
+Version: 1.0.6
 Description: tentative
