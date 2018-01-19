@@ -138,7 +138,7 @@ func WebCam(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	code, _, _ := preCameraInit(w, ps)
 	switch code {
 	case "snap":
-		log.Println("Webcam snap: on")
+		//log.Println("Webcam snap: on")
 		fmt.Fprintf(w, "Webcam snap: on")
 		webcam.Snap("/home/adachi/repo/web/private_html/local/img/lastsnap.jpg")
 	}

@@ -50,7 +50,7 @@ func Snap(f string) {
 				font.PutText(imgCV, t.Format(layout), point.ToPoint(), col)
 				opencv.SaveImage(f, imgCV, nil)
 				checkAndMoveFile(f)
-				log.Println("snapshot Image")
+				//log.Println("snapshot Image")
 				if count++; count > 3 {
 					break
 				}
