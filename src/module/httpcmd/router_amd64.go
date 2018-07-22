@@ -25,6 +25,8 @@ func Listen(port string) {
 	router.GET("/senpu/:id", Senpu)
 	router.GET("/webcam", WebCamIndex)
 	router.GET("/webcam/:id", WebCam)
+	router.GET("/volt", VoltIndex)
+	router.GET("/volt/:id", Volt)
 
 	log.Fatal(http.ListenAndServe(port, router))
 
@@ -142,4 +144,21 @@ func WebCam(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		fmt.Fprintf(w, "Webcam snap: on")
 		webcam.Snap("/home/adachi/repo/web/private_html/local/img/lastsnap.jpg")
 	}
+}
+
+func VoltIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	fmt.Fprintf(w, "Volt Welcmoe!")
+}
+
+func Volt(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	code, cmd, arg := preInit(w, ps)
+	switch code {
+	case "on":
+		fmt.Fprintf(w, "Volt: on")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/vol_on.txt"))
+	case "off":
+		fmt.Fprintf(w, "Volt: off")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/vol_off.txt"))
+	}
+	RunCommand(cmd, arg)
 }
