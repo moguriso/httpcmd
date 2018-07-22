@@ -123,6 +123,15 @@ func Senpu(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	case "off":
 		fmt.Fprintf(w, "Senpu show: off")
 		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/senpuuki_on-off.txt"))
+	case "high":
+		fmt.Fprintf(w, "Senpu show: high")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/senpuuki_high.txt"))
+	case "low":
+		fmt.Fprintf(w, "Senpu show: low")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/senpuuki_low.txt"))
+	case "nec":
+		fmt.Fprintf(w, "Senpu show: nec")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/senpuuki_kubifuri.txt"))
 	case "timer":
 		fmt.Fprintf(w, "Senpu show: timer")
 		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/senpuuki_timer.txt"))
