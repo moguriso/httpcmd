@@ -1,6 +1,6 @@
 
 BUILD		:= release
-VERSION		:= 1.0.8
+VERSION		:= 1.0.9
 REVISION	:= $(shell git rev-parse --short HEAD)
 
 SRCS		:= $(shell find ./src -type f -name '*.go')
