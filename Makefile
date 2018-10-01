@@ -1,6 +1,6 @@
 
 BUILD		:= release
-VERSION		:= v1.0.8
+VERSION		:= 1.0.8
 REVISION	:= $(shell git rev-parse --short HEAD)
 
 SRCS		:= $(shell find ./src -type f -name '*.go')
@@ -82,3 +82,8 @@ deb-arm64: ./bin/main-linux-arm64$(IS_DBG)
 
 archive:
 	@git archive HEAD --output=src.zip
+
+install:
+	$(call BuildDeb,main-linux-amd64$(IS_DBG),$(IS_DBG),amd64)
+	sudo dpkg -i ir-cmd-recv-http_$(VERSION)_amd64.deb
+
