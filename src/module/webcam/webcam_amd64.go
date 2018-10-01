@@ -9,11 +9,6 @@ import (
 )
 
 var gCap *opencv.Capture
-var gCameraIndex int
-
-func SetCameraIndex(index int) {
-	gCameraIndex = index
-}
 
 func checkAndMoveFile(f string) {
 	if _, err := os.Stat(f); err == nil {
@@ -24,9 +19,14 @@ func checkAndMoveFile(f string) {
 }
 
 func Init() {
-	gCap = opencv.NewCameraCapture(gCameraIndex)
-	if gCap == nil {
-		panic("can not open camera")
+	for ii := 0; ii < 9; ii++ {
+		gCap = opencv.NewCameraCapture(ii)
+		if gCap != nil {
+			log.Println("using camera ", ii)
+			break
+		} else {
+			log.Println("camera ", ii, " not found")
+		}
 	}
 }
 

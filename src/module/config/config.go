@@ -7,21 +7,20 @@ import (
 )
 
 type Param struct {
-	CameraIndex        int
 	SensorUrl          string
 	SensorReadInterval float64
 }
 
 func NewParams() (*Param, error) {
 	p := &Param{
-		CameraIndex: 0.0,
+		SensorUrl:          "",
+		SensorReadInterval: 0.0,
 	}
 	return p, nil
 }
 
 func (p *Param) LoadParam(fileName string) error {
 	var config map[string]interface{}
-	var ftmp float64
 
 	isSet := false
 	data, err := ioutil.ReadFile(fileName)
@@ -36,14 +35,6 @@ func (p *Param) LoadParam(fileName string) error {
 		goto exit_func
 	}
 	err = nil
-
-	ftmp, isSet = config["camera_index"].(float64)
-	if !isSet {
-		p.CameraIndex = 0
-	} else {
-		p.CameraIndex = int(ftmp)
-	}
-	log.Println("camera index: ", p.CameraIndex)
 
 	p.SensorUrl, isSet = config["sensor_url"].(string)
 	if !isSet {
