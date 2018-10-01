@@ -90,9 +90,12 @@ func Air(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	case "jositu":
 		fmt.Fprintf(w, "Air show: jositu on")
 		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_jositu.txt"))
+	case "reibo-high":
+		fmt.Fprintf(w, "Air show: reibo(24deg) on")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_reibo_24deg.txt"))
 	case "reibo":
-		fmt.Fprintf(w, "Air show: reibo on")
-		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_reibo.txt"))
+		fmt.Fprintf(w, "Air show: reibo(26deg) on")
+		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_reibo_26deg.txt"))
 	case "warm":
 		fmt.Fprintf(w, "Air show: warm on")
 		arg = fmt.Sprintf("-d %s", ReadSeq("./cmd/air_warm.txt"))
