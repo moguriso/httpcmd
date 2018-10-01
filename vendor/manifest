@@ -4,19 +4,19 @@
 		{
 			"importpath": "github.com/PuerkitoBio/goquery",
 			"repository": "https://github.com/PuerkitoBio/goquery",
-			"revision": "1a71cc719d0d5b9e4f14ae072bef08b576b0bab5",
+			"revision": "dc2ec5c7ca4d9aae063b79b9f581dd3ea6afd2b2",
 			"branch": "master"
 		},
 		{
 			"importpath": "github.com/andybalholm/cascadia",
 			"repository": "https://github.com/andybalholm/cascadia",
-			"revision": "349dd0209470eabd9514242c688c403c0926d266",
+			"revision": "901648c87902174f774fac311d7f176f8647bdaa",
 			"branch": "master"
 		},
 		{
 			"importpath": "github.com/julienschmidt/httprouter",
 			"repository": "https://github.com/julienschmidt/httprouter",
-			"revision": "",
+			"revision": "348b672cd90d8190f8240323e372ecd1e66b59dc",
 			"branch": "master"
 		},
 		{
@@ -29,20 +29,20 @@
 		{
 			"importpath": "github.com/stianeikeland/go-rpio",
 			"repository": "https://github.com/stianeikeland/go-rpio",
-			"revision": "896db2ee1c7f95240dd6a09e56edf9cece107a34",
+			"revision": "3abdd2207d33843c1c3fbea540bdf07990075c03",
 			"branch": "master"
 		},
 		{
 			"importpath": "golang.org/x/net/html",
 			"repository": "https://go.googlesource.com/net",
-			"revision": "",
+			"revision": "4dfa2610cdf3b287375bbba5b8f2a14d3b01d8de",
 			"branch": "master",
 			"path": "/html"
 		},
 		{
 			"importpath": "golang.org/x/net/websocket",
 			"repository": "https://go.googlesource.com/net",
-			"revision": "",
+			"revision": "4dfa2610cdf3b287375bbba5b8f2a14d3b01d8de",
 			"branch": "master",
 			"path": "/websocket"
 		}
