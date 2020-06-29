@@ -6,14 +6,14 @@ import (
 	"net/http"
 	"time"
 
-	"module/webcam"
+	//"module/webcam"
 
 	"github.com/julienschmidt/httprouter"
 )
 
 func Listen(port string) {
 
-	webcam.Init()
+	//webcam.Init()
 
 	router := httprouter.New()
 	router.GET("/", Index)
@@ -23,14 +23,16 @@ func Listen(port string) {
 	router.GET("/air/:id", Air)
 	router.GET("/senpu", SenpuIndex)
 	router.GET("/senpu/:id", Senpu)
-	router.GET("/webcam", WebCamIndex)
-	router.GET("/webcam/:id", WebCam)
+	//router.GET("/webcam", WebCamIndex)
+	//router.GET("/webcam/:id", WebCam)
 	router.GET("/volt", VoltIndex)
 	router.GET("/volt/:id", Volt)
+	router.GET("/dehumidifier", DehumidifierIndex)
+	router.GET("/dehumidifier/:id", Dehumidifier)
 
 	log.Fatal(http.ListenAndServe(port, router))
 
-	webcam.Deinit()
+	//webcam.Deinit()
 }
 
 func modHeader(w http.ResponseWriter) {
@@ -147,17 +149,38 @@ func Senpu(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	RunCommand(cmd, arg)
 }
 
-func WebCamIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprintf(w, "Webcam Welcome!")
+//func WebCamIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+//	fmt.Fprintf(w, "Webcam Welcome!")
+//}
+//
+//func WebCam(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+//	code, _, _ := preCameraInit(w, ps)
+//	switch code {
+//	case "snap":
+//		//log.Println("Webcam snap: on")
+//		fmt.Fprintf(w, "Webcam snap: on")
+//		webcam.Snap("/home/adachi/repo/web/private_html/local/img/lastsnap.jpg")
+//	}
+//}
+
+func DehumidifierIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	fmt.Fprintf(w, "Dehumidifier Welcmoe!")
 }
 
-func WebCam(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	code, _, _ := preCameraInit(w, ps)
-	switch code {
-	case "snap":
-		//log.Println("Webcam snap: on")
-		fmt.Fprintf(w, "Webcam snap: on")
-		webcam.Snap("/home/adachi/repo/web/private_html/local/img/lastsnap.jpg")
+func Dehumidifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	retry := 0
+	for {
+		err := CtrlDehumidifier()
+		if err == nil {
+			fmt.Fprintf(w, "Dehumidifier ctrl success.")
+			break
+		} else if retry > 3 {
+			fmt.Fprintf(w, "Dehumidifier ctrl fail... 諦めます...")
+			break
+		} else {
+			retry++
+			fmt.Fprintf(w, "Dehumidifier ctrl fail! ... retry")
+		}
 	}
 }
 
