@@ -20,13 +20,6 @@
 			"branch": "master"
 		},
 		{
-			"importpath": "github.com/lazywei/go-opencv/opencv",
-			"repository": "https://github.com/lazywei/go-opencv",
-			"revision": "fb0a687051c795176e0698f358231f2ab1585bcb",
-			"branch": "master",
-			"path": "/opencv"
-		},
-		{
 			"importpath": "github.com/stianeikeland/go-rpio",
 			"repository": "https://github.com/stianeikeland/go-rpio",
 			"revision": "3abdd2207d33843c1c3fbea540bdf07990075c03",
