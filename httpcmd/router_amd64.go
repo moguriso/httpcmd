@@ -27,8 +27,6 @@ func Listen(port string) {
 	//router.GET("/webcam/:id", WebCam)
 	router.GET("/volt", VoltIndex)
 	router.GET("/volt/:id", Volt)
-	router.GET("/dehumidifier", DehumidifierIndex)
-	router.GET("/dehumidifier/:id", Dehumidifier)
 
 	log.Fatal(http.ListenAndServe(port, router))
 
@@ -162,27 +160,6 @@ func Senpu(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 //		webcam.Snap("/home/adachi/repo/web/private_html/local/img/lastsnap.jpg")
 //	}
 //}
-
-func DehumidifierIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprintf(w, "Dehumidifier Welcmoe!")
-}
-
-func Dehumidifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	retry := 0
-	for {
-		err := CtrlDehumidifier()
-		if err == nil {
-			fmt.Fprintf(w, "Dehumidifier ctrl success.")
-			break
-		} else if retry > 3 {
-			fmt.Fprintf(w, "Dehumidifier ctrl fail... 諦めます...")
-			break
-		} else {
-			retry++
-			fmt.Fprintf(w, "Dehumidifier ctrl fail! ... retry")
-		}
-	}
-}
 
 func VoltIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	fmt.Fprintf(w, "Volt Welcmoe!")

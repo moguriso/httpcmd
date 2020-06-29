@@ -4,8 +4,8 @@ package main
 
 import (
 	"flag"
-	"module/config"
-	"module/httpcmd"
+	"ir-http/config"
+	"ir-http/httpcmd"
 	"os"
 )
 

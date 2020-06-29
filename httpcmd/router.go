@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 
-	"module/gpio"
+	"ir-http/gpio"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -18,6 +18,8 @@ func Listen(port string) {
 	router.GET("/", Index)
 	router.GET("/led", LedIndex)
 	router.GET("/led/:id", Led)
+	router.GET("/dehumidifier", DehumidifierIndex)
+	router.GET("/dehumidifier/:id", Dehumidifier)
 
 	log.Fatal(http.ListenAndServe(port, router))
 }
@@ -78,5 +80,26 @@ func Led(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	case "yellow":
 		fmt.Fprintf(w, "Led show: yellow")
 		gpio.LedYellow()
+	}
+}
+
+func DehumidifierIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	fmt.Fprintf(w, "Dehumidifier Welcmoe!")
+}
+
+func Dehumidifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	retry := 0
+	for {
+		err := CtrlDehumidifier()
+		if err == nil {
+			fmt.Fprintf(w, "Dehumidifier ctrl success.")
+			break
+		} else if retry > 3 {
+			fmt.Fprintf(w, "Dehumidifier ctrl fail... 諦めます...")
+			break
+		} else {
+			retry++
+			fmt.Fprintf(w, "Dehumidifier ctrl fail! ... retry")
+		}
 	}
 }
